@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b1020">
+    <title>Projects | Taiyab Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <a class="brand" href="index.html">Taiyab<span>.</span></a>
+        <nav class="site-nav" aria-label="Primary">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="projects.html" aria-current="page">Projects</a>
+            <a href="resume.html">Resume</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <a class="header-cta" href="contact.html">Let’s build</a>
+    </header>
+
+    <main>
+        <section class="section page-hero reveal">
+            <p class="eyebrow">Projects</p>
+            <h1>Selected builds with different visual moods.</h1>
+            <p class="lead">This page keeps the interactive filter, so visitors can switch between web, UI, and brand-style projects without leaving the page.</p>
+        </section>
+
+        <section class="section reveal">
+            <div class="section-heading section-heading-row">
+                <div>
+                    <p class="eyebrow">Selected work</p>
+                    <h2>Filter by type.</h2>
+                </div>
+                <div class="filter-group" role="tablist" aria-label="Project filters">
+                    <button class="filter active" data-filter="all">All</button>
+                    <button class="filter" data-filter="web">Web</button>
+                    <button class="filter" data-filter="ui">UI</button>
+                    <button class="filter" data-filter="brand">Brand</button>
+                </div>
+            </div>
+            <div class="project-grid">
+                <article class="project-card" data-category="web">
+                    <p class="project-tag">Web app</p>
+                    <h3>Studio Nova</h3>
+                    <p>An animated agency homepage with bold color blocks and conversion-focused sections.</p>
+                </article>
+                <article class="project-card" data-category="ui">
+                    <p class="project-tag">UI system</p>
+                    <h3>Pulse Dashboard</h3>
+                    <p>A clean analytics interface with cards, charts, and strong visual hierarchy.</p>
+                </article>
+                <article class="project-card" data-category="brand">
+                    <p class="project-tag">Brand site</p>
+                    <h3>Motion Lab</h3>
+                    <p>A personal brand site with editorial typography and soft interactive accents.</p>
+                </article>
+                <article class="project-card" data-category="web">
+                    <p class="project-tag">Landing page</p>
+                    <h3>Launch Deck</h3>
+                    <p>A product launch layout designed for quick scanning and strong calls to action.</p>
+                </article>
+                <article class="project-card" data-category="ui">
+                    <p class="project-tag">Design system</p>
+                    <h3>North Star</h3>
+                    <p>Reusable cards, forms, and spacing rules for clean interface consistency.</p>
+                </article>
+                <article class="project-card" data-category="brand">
+                    <p class="project-tag">Portfolio</p>
+                    <h3>Signal One</h3>
+                    <p>A bold personal website concept built to showcase personality without clutter.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Want something similar for your own work? Head to the Contact page.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
