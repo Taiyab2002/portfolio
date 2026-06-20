@@ -199,9 +199,15 @@ main {
 
 .hero h1 {
     margin: 0;
-    font-size: clamp(3rem, 7vw, 6rem);
-    line-height: 0.95;
-    max-width: 12ch;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    max-width: 34ch;
+    text-align: left;
+    hyphens: none;
+}
+
+.hero-copy {
+    text-align: left;
 }
 
 .lead,
@@ -308,6 +314,11 @@ main {
 .contact-section h2 {
     margin: 0.1rem 0;
     font-size: clamp(2rem, 4vw, 3.25rem);
+}
+
+.profile-card h2 {
+    white-space: nowrap;
+    overflow-wrap: normal;
 }
 
 .profile-role {
@@ -419,6 +430,57 @@ main {
     align-items: start;
 }
 
+/* Prevent overlap between contact info cards and form controls */
+.contact-section {
+    gap: 1.25rem;
+}
+
+.contact-links article {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-form {
+    position: relative;
+    z-index: 1;
+}
+
+/* Improve stacking and spacing for contact area to avoid overlap */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.contact-links article {
+    padding: 0.9rem;
+    background: rgba(255,255,255,0.02);
+    border-radius: 12px;
+}
+
+.contact-links p {
+    margin: 0;
+    color: var(--muted);
+    word-break: break-word;
+}
+
+.contact-form {
+    gap: 0.9rem;
+}
+
+/* Make action buttons stack on small screens to avoid overlap */
+@media (max-width: 640px) {
+    .contact-form .button {
+        display: block;
+        width: 100%;
+    }
+
+    .contact-links article,
+    .contact-form {
+        z-index: 2;
+    }
+}
+
 .resume-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -478,6 +540,54 @@ main {
 .contact-form textarea:focus {
     border-color: rgba(124, 247, 212, 0.45);
     box-shadow: 0 0 0 4px rgba(124, 247, 212, 0.08);
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    border: 1.5px solid var(--line);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--muted);
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.social-icon span {
+    display: none;
+}
+
+.social-icon:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    background: rgba(124, 247, 212, 0.12);
+    color: var(--accent);
+}
+
+.social-icon.whatsapp::before {
+    content: '💬';
+    font-size: 1.5rem;
+}
+
+.social-icon.facebook::before {
+    content: '𝗙';
+    font-size: 1.8rem;
+}
+
+.social-icon.instagram::before {
+    content: '📷';
+    font-size: 1.5rem;
 }
 
 .site-footer {
@@ -545,3 +655,132 @@ main {
         max-width: 100%;
     }
 }
+
+/* Mobile menu toggle */
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 0.5rem 0.75rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+@media (max-width: 980px) {
+    .menu-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .site-header {
+        align-items: center;
+    }
+
+    .site-nav {
+        display: none;
+        position: absolute;
+        right: clamp(1rem, 4vw, 3rem);
+        top: calc(100% + 0.5rem);
+        background: var(--surface);
+        padding: 0.75rem;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        flex-direction: column;
+        gap: 0.5rem;
+        width: min(220px, 60vw);
+    }
+
+    .site-nav.open {
+        display: flex;
+    }
+
+    .site-nav a {
+        display: block;
+        padding: 0.45rem 0.6rem;
+        border-radius: 8px;
+    }
+}
+
+/* Active nav link style added by JS */
+.site-nav a.active-link {
+    background: rgba(124, 247, 212, 0.08);
+    color: var(--text);
+    font-weight: 600;
+}
+
+/* Modal styles */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(4, 8, 15, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+}
+
+.modal {
+    background: var(--surface-strong);
+    border-radius: 16px;
+    padding: 1.25rem;
+    max-width: 520px;
+    width: 92%;
+    box-shadow: var(--shadow);
+    color: var(--text);
+    transform: translateY(24px) scale(0.98);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.modal-overlay.visible .modal {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+
+.modal .close {
+    background: transparent;
+    border: 0;
+    color: var(--muted);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.modal-image {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+}
+
+.modal .project-tag {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.75rem;
+    margin-bottom: 0.6rem;
+}
+
+.modal h3 {
+    margin-top: 0;
+}
+
+.modal-link-note {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin: 0.4rem 0 0.8rem;
+}
+
+.modal a.button {
+    display: inline-flex;
+    margin-top: 1rem;
+}
+
